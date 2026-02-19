@@ -50,7 +50,7 @@ data=('Col1,Col2,Col3\n'
       'a,b,2\n'
       'c,d,3\n')
 
-print(type(data))  #Output: <class 'str'>
+# print(type(data))  #Output: <class 'str'>
 # print(data)
 
 ## In memory file
@@ -80,9 +80,27 @@ data3 = ('index, a, b,c\n'
 
 pd.read_csv(StringIO(data3), index_col=0)  # it will read the in memory file object and create a dataframe with the first column as index
 
-print(pd.read_csv(StringIO(data3), index_col=0))
-print(pd.read_csv(StringIO(data3)))
+# print(pd.read_csv(StringIO(data3), index_col=0))
+# print(pd.read_csv(StringIO(data3)))
 
 
 
 ### Part 3
+
+data4 = '{"employName": "Aditya", "email": "adi@gmail.com", "jobProfile": [{"title": "Team Leader", "title2": "Front-end Developer"}]}'
+
+# print(type(data))  # it will return the type of data <class 'str'>
+
+# print((data4))
+
+print(pd.read_json(StringIO(data4)))  # read JSON string via StringIO so pandas treats it as data
+
+
+df5 = pd.DataFrame([['a', 'b'], ['c', 'd']],
+                   index=['Row1', 'Row2'], 
+                   columns=['Col1', 'Col2'])
+
+print(df5)
+
+print(df5.to_json())  # it will convert the dataframe to json string
+
